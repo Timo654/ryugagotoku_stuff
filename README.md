@@ -1,2 +1,2 @@
 # ryugagotoku_stuff
-random scripts for RGG series titles
+various scripts that I've made for the Ryu Ga Gotoku titles

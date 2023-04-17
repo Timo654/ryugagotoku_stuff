@@ -1,0 +1,5 @@
+;any bones starting with these strings in this file will be loaded
+;comments start with ";"
+;these two below are for fixing faces
+face
+_
