@@ -1,7 +1,7 @@
 # Old Engine
 Scripts for Old Engine titles
 
-**musashi_shopping** - Script for editing shop.bin files in Ryu ga Gotoku KENZAN!
+**musashi_shopping** - Script for editing shop.bin files in Ryu ga Gotoku KENZAN! and Yakuza 3.
 
 **name_extractor** - Extracts names from chara_common/name_list.bin used in Old Engine titles. Does not support repacking.
 
