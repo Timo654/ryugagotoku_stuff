@@ -15,7 +15,7 @@ def bbox(im):
 
 
 def add_parts_to_img(im, data, puzzle_dir):
-    for item in data:
+    for item in reversed(data):
         part = data[item][item]
         if "name" not in part:
             img = Path(puzzle_dir) / (item + '.png')

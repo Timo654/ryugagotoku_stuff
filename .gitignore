@@ -127,3 +127,16 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+*.dblite
+*.exe
+*.bat
+*.const
+*.bin
+*.cpp
+*.h
+*.obj
+*.dll
+RGG Online/RONix/ronix_main.onefile-build/clcache-stats.30840.txt
+RGG Online/RONix/ronix_main.build/scons-report.txt
+RGG Online/RONix/ronix_main.build/clcache-stats.18844.txt
+RGG Online/RONix/ronix_main.onefile-build/scons-report.txt
