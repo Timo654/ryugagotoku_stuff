@@ -1,5 +1,6 @@
 from binary_reader import BinaryReader
 import sys
+import json
 
 def read_file(ass):
     data = dict()
@@ -53,13 +54,19 @@ def rebuild(data):
 
 def main():
     if len(sys.argv) > 1:
-        input_files = sys.argv[:1]
+        input_files = sys.argv[1:]
         file_count = 0
         for file in input_files:
             if file.endswith(".json"):
-                rebuild(file)
+                with open(file, encoding='UTF-8') as f:
+                    data = rebuild(json.loads(f.read()))
+                with open(f'{file}.dat', 'wb') as f:
+                    f.write(data)
             else:
-                read_file(file)
+                with open(file, 'rb') as f:
+                    data =  read_file(BinaryReader(f.read()))
+                with open(f'{file}.json', 'w', encoding='UTF-8') as f:
+                    json.dump(data, f, indent=2)
             file_count += 1
 
         print(f'{file_count} file(s) rebuilt.')

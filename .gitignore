@@ -140,3 +140,5 @@ RGG Online/RONix/ronix_main.onefile-build/clcache-stats.30840.txt
 RGG Online/RONix/ronix_main.build/scons-report.txt
 RGG Online/RONix/ronix_main.build/clcache-stats.18844.txt
 RGG Online/RONix/ronix_main.onefile-build/scons-report.txt
+*.dat
+*.json
