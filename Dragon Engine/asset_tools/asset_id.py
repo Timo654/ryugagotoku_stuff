@@ -339,6 +339,8 @@ def read_file(ass):
                                 item['Unk5'] = ass.read_uint32()
                                 item_list.append(item)
                             asset_data['Unknown list'] = item_list
+                    else:
+                        raise ValueError(f"Unknown asset type {o}. Please report the issue to the tool's creator!")
                     ass.seek(prev_pos2)
                     data_list.append(asset_data)
             asset['Data'] = data_list
@@ -701,6 +703,8 @@ def rebuild(data):
                                 ass.write_uint32(item['Unk5'])
                         else:
                             ass.write_uint32(0) #no entries
+                    else:
+                        raise ValueError(f"Unknown asset type {o}. Please report the issue to the tool's creator!")
 
                 else:
                     sub.write_uint32(0)  # no pointer
@@ -724,7 +728,7 @@ def main():
                 with open(file, 'rb') as f:
                     data =  read_file(BinaryReader(f.read()))
                 with open(f'{file}.json', 'w', encoding='UTF-8') as f:
-                    json.dump(data, f, indent=2)
+                    json.dump(data, f, indent=2, ensure_ascii=False)
             file_count += 1
 
         print(f'{file_count} file(s) rebuilt.')

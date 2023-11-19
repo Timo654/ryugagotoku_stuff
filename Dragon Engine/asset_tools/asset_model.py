@@ -118,6 +118,8 @@ def rebuild(data):
                     ass.write_float(asset_data['lod_draw_factor_hm'])
                     ass.write_float(asset_data['lod_draw_factor_ml'])
                     ass.write_uint64(0)  # Padding
+                else:
+                    raise ValueError(f"Unknown asset type {o}. Please report the issue to the tool's creator!")
             else:
                 sub.write_uint32(0)  # no pointer
         sub.extend(ass.buffer())
@@ -242,6 +244,8 @@ def read_file(ass):
                         asset_data['lod_draw_factor_hm'] = ass.read_float()
                         asset_data['lod_draw_factor_ml'] = ass.read_float()
                         ass.seek(8, 1)  # padding
+                    else:
+                        raise ValueError(f"Unknown asset type {o}. Please report the issue to the tool's creator!")
                     ass.seek(prev_pos2)
                     data_list.append(asset_data)
             asset['Data'] = data_list
@@ -265,7 +269,7 @@ def main():
                 with open(file, 'rb') as f:
                     data =  read_file(BinaryReader(f.read()))
                 with open(f'{file}.json', 'w', encoding='UTF-8') as f:
-                    json.dump(data, f, indent=2)
+                    json.dump(data, f, indent=2, ensure_ascii=False)
             file_count += 1
 
         print(f'{file_count} file(s) rebuilt.')

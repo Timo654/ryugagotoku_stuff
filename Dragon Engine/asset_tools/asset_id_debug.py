@@ -32,7 +32,7 @@ def main():
             with open(file, 'rb') as f:
                 data =  read_file(BinaryReader(f.read()))
             with open(f'{file}.json', 'w', encoding='UTF-8') as f:
-                json.dump(data, f, indent=2)
+                json.dump(data, f, indent=2, ensure_ascii=False)
             file_count += 1
 
         print(f'{file_count} file(s) rebuilt.')
