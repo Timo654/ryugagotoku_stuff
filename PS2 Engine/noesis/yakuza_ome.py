@@ -52,15 +52,11 @@ def load_mesh(bs, odbp_pointer, uv, weights, stage, mesh_count, current_material
         if weights:
             weight = bs.readFloat()
             bones = list()
-            for _ in range(4):
+            for _ in range(2):
                 bones.append(bs.readByte())
-            bones = [x for x in bones if x != 0]
-            if len(bones) != 0:
-                # weight = [weight / len(bones)] * len(bones)
-                weight = [weight] * len(bones)
-                weight_list.append(NoeVertWeight(bones, weight))
-            else:
-                weight_list.append(NoeVertWeight([0], [weight]))
+            bs.seek(2, NOESEEK_REL)
+            weight = [weight, 1 - weight]
+            weight_list.append(NoeVertWeight(bones, weight))
 
         normal = NoeVec3.fromBytes(bs.readBytes(12))
         normalBuff += normal.toBytes()
